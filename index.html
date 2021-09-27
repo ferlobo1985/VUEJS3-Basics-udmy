@@ -11,23 +11,10 @@
 <body>
     <div id="app">
 
-        <!-- <ul>
-            <li v-for="(name,index) in names">
-                {{name}}:{{index}}
-            </li>
-        </ul> -->
-<!-- 
-        <ul>
-            <li v-for="(car,index) in cars">
-                {{ car.brand }} : {{ index }} : {{ car.color }}
-            </li>
-        </ul> -->
+        <div v-once>{{ name }}</div>
+        <div>{{ name }}</div>
 
-        <ul>
-            <li v-for="(key,value,index) in user">
-                {{ index }} : {{ key }} : {{ value }}
-            </li>
-        </ul>
+        {{ update() }}
 
 
     </div>
@@ -37,30 +24,14 @@
     const App = {
         data(){
             return {
-                user:{
-                    name:'Francis',
-                    lastname:'Jones',
-                    age:24
-                },
-               names:[
-                   'Francis',
-                   'Jane',
-                   'Steve'
-               ],
-               cars:[
-                    {
-                        brand:'Ferrari',
-                        color:'Red'
-                    },
-                    {
-                        brand:'Fiat',
-                        color:'Blue'
-                    },
-                    {
-                        brand:'Ford',
-                        color:'Green'
-                    }
-               ]
+                name:'Francis'
+            }
+        },
+        methods:{
+            update(){
+                setTimeout(() => {
+                    this.name = 'Steve'
+                }, 2000);
             }
         }
     }
