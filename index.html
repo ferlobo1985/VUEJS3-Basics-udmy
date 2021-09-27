@@ -10,27 +10,31 @@
 </head>
 <body>
     <div id="app">
-       <img v-bind:src="src" v-bind:alt="alt"/>
-       <hr/>
-       <a v-bind:href="link">Go to google</a>
-       <hr/>
-       <p v-text="myText"></p>
-       <hr/>
-       <p v-html="myHtml"></p>
+     
+        <p v-show="false">
+            Show it
+        </p>
+      
+        <p v-if="checkUser()">
+            This is francis
+        </p>
 
 
     </div>
 </body>
 <script>
-    const date = new Date().toLocaleString()
+  
     const App = {
         data(){
             return {
-              src:'https://picsum.photos/200/300',
-              alt:'Another image',
-              link:'http://google.com',
-              myText:'Hello guys !!',
-              myHtml:'<strong>My html</strong>'
+                user:'Steve',
+                userAge:15,
+                allowedAge:18
+            }
+        },
+        methods:{
+            checkUser(){
+                return this.user === 'Francis' ? true : false
             }
         }
     }
