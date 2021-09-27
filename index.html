@@ -10,28 +10,33 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ gretting }}</p>
-        <p> Is it true:{{ isItTrue ? 'Yes':'No' }}</p>
-        <p>{{ array[0] }}</p>
-        <p>{{ obj.car }}</p>
-        <p>{{ func() }}</p>
+        <p>{{ welcome() }}</p>
     </div>
 </body>
 <script>
-
     const date = new Date().toLocaleString()
     const App = {
         data(){
             return {
                 gretting:'Hello guys today is ' + date,
-                isItTrue: true,
-                array:['Francis','Jane'],
+                isItTrue: false,
+                array:['Francis','Jane','Steve'],
                 obj:{
                     car:'Ferrari'
                 },
                 func:()=>{
                     return 'Message from function'
                 }
+            }
+        },
+        methods:{
+            welcome(){
+                const randomName = this.array[Math.floor(Math.random() * this.array.length)]
+                if(this.isItTrue){
+                    return `${this.gretting}, my name is ${randomName}`
+                }
+
+                return this.obj.car
             }
         }
     }
