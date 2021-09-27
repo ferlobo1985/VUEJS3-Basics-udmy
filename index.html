@@ -10,31 +10,57 @@
 </head>
 <body>
     <div id="app">
-     
-        <p v-show="false">
-            Show it
-        </p>
-      
-        <p v-if="checkUser()">
-            This is francis
-        </p>
+
+        <!-- <ul>
+            <li v-for="(name,index) in names">
+                {{name}}:{{index}}
+            </li>
+        </ul> -->
+<!-- 
+        <ul>
+            <li v-for="(car,index) in cars">
+                {{ car.brand }} : {{ index }} : {{ car.color }}
+            </li>
+        </ul> -->
+
+        <ul>
+            <li v-for="(key,value,index) in user">
+                {{ index }} : {{ key }} : {{ value }}
+            </li>
+        </ul>
 
 
     </div>
 </body>
 <script>
-  
+
     const App = {
         data(){
             return {
-                user:'Steve',
-                userAge:15,
-                allowedAge:18
-            }
-        },
-        methods:{
-            checkUser(){
-                return this.user === 'Francis' ? true : false
+                user:{
+                    name:'Francis',
+                    lastname:'Jones',
+                    age:24
+                },
+               names:[
+                   'Francis',
+                   'Jane',
+                   'Steve'
+               ],
+               cars:[
+                    {
+                        brand:'Ferrari',
+                        color:'Red'
+                    },
+                    {
+                        brand:'Fiat',
+                        color:'Blue'
+                    },
+                    {
+                        brand:'Ford',
+                        color:'Green'
+                    }
+               ]
             }
         }
     }
