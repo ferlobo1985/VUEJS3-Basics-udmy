@@ -10,7 +10,15 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ welcome() }}</p>
+       <img v-bind:src="src" v-bind:alt="alt"/>
+       <hr/>
+       <a v-bind:href="link">Go to google</a>
+       <hr/>
+       <p v-text="myText"></p>
+       <hr/>
+       <p v-html="myHtml"></p>
+
+
     </div>
 </body>
 <script>
@@ -18,25 +26,11 @@
     const App = {
         data(){
             return {
-                gretting:'Hello guys today is ' + date,
-                isItTrue: false,
-                array:['Francis','Jane','Steve'],
-                obj:{
-                    car:'Ferrari'
-                },
-                func:()=>{
-                    return 'Message from function'
-                }
-            }
-        },
-        methods:{
-            welcome(){
-                const randomName = this.array[Math.floor(Math.random() * this.array.length)]
-                if(this.isItTrue){
-                    return `${this.gretting}, my name is ${randomName}`
-                }
-
-                return this.obj.car
+              src:'https://picsum.photos/200/300',
+              alt:'Another image',
+              link:'http://google.com',
+              myText:'Hello guys !!',
+              myHtml:'<strong>My html</strong>'
             }
         }
     }
