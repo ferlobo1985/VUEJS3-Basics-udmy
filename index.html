@@ -31,6 +31,15 @@
               active:false
             }   
         },
+        watch:{
+            active(value){
+                console.log('starting')
+                // setTimeout(()=>{
+                //     console.log('changed')
+                //     this.user = 'Steve'
+                // },3000);
+            }
+        },
         computed:{
             compMessage(){
                 console.log('COMPUTED MESSAGE')
