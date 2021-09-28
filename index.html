@@ -10,18 +10,8 @@
 </head>
 <body>
     <div id="app">
-        <!-- <h1>{{ name }}</h1>
-        <button v-on:click.right="changeName('Ron', $event)">
-            Change name
-        </button> -->
-
-        <Form v-on:submit.prevent="handleForm">
-            <input/>
-            <button type="submit">
-                Submit
-            </button> 
-        </Form>
-
+       
+        <input type="text" v-on:keyup.space.enter.G="showEvent"/>
 
     </div>
 </body>
@@ -30,16 +20,12 @@
     const App = {
         data(){
             return {
-                name:'Francis'
+              
             }
         },
         methods:{
-            handleForm(){
-                console.log('Submit form')
-            },
-            changeName(newName, event){
-                this.name = newName;
-                console.log(event)
+            showEvent(event){
+                console.log(event.target.value);
             }
         }
     }
