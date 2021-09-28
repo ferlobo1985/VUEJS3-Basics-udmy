@@ -10,58 +10,50 @@
 </head>
 <body>
 
-    
-    <div id="app1">
-        <div>Instance one:{{ value }}</div>
-        <button @click="changeValue">Change</button>
+    <div id="app">
+        <app-header></app-header>
+        <user-name></user-name>
+        <app-footer></app-footer>
     </div>
-
-
-    <div id="app2">
-        <div>Instance two:{{ value }}</div>
-        <button @click="sayHello">Say hello</button>
-    </div>
-
-
-
 
 </body>
 <script>
 
-    let message = "Hey guys";
+    const app = Vue.createApp({});
+    
+    app.component('app-header',{
+        data(){
+            return{
+                name:'HEADER'
+            }
+        },
+        template:`<div>{{ name }}</div>`
+    });
 
-    const app1 = Vue.createApp({
+    app.component('user-name',{
         data(){
             return {
-                value:'Instance one working'
+                name:'Francis'
             }   
         },
-        methods:{
-            changeValue(){
-                console.log(app2)
-                app2.value = 'The value changed'
+        template:`<div>{{ name }}</div>`
+    });
+
+    app.component('app-footer',{
+        data(){
+            return{
+                name:'FOOTER'
             }
-        }
-    }).mount('#app1');
+        },
+        template:`<div>{{ name }}</div>`
+    })
+
+    
+
+    app.mount('#app');
+
+
    
-
-    const app2 = Vue.createApp({
-        data(){
-            return {
-                value:'Instance two working'
-            }   
-        },
-        methods:{
-            sayHello(){
-                alert(message)
-            }
-        }
-    }).mount('#app2');
-
-
-
-  
-
 </script>
 
 
