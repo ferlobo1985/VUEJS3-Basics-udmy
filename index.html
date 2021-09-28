@@ -11,15 +11,9 @@
 <body>
     <div id="app">
         
-        <input v-model="user"/>
-        <button v-on:click="toggleActive">Other action</button>
+        <button @click="getIt">Helvetica and Times New Roman walk into a bar.</button>
         <hr/>
-        <div>
-            Message: {{ compMessage }}
-        </div>
-        <div>
-            Active: {{ compActive }}
-        </div>
+        <a :href="website">Go to worst/best website in the world</a>
 
     </div>
 </body>
@@ -27,32 +21,12 @@
     const App = {
         data(){
             return {
-              user:'',
-              active:false
+              website:'https://www.lingscars.com/'
             }   
         },
-        watch:{
-            active(value){
-                console.log('starting')
-                // setTimeout(()=>{
-                //     console.log('changed')
-                //     this.user = 'Steve'
-                // },3000);
-            }
-        },
-        computed:{
-            compMessage(){
-                console.log('COMPUTED MESSAGE')
-                return this.user === 'Francis' ? 'Welcome' : 'Now allowed'
-            },
-            compActive(){
-                console.log('COMPUTED ACTIVE')
-                return this.active ? 'Active':'Not active'
-            }
-        },
         methods:{
-            toggleActive(){
-                this.active = this.active ? false : true
+            getIt(){
+                alert('“Get out of here!” shouts the bartender. “We don’t serve your type.”')
             }
         }
     }
