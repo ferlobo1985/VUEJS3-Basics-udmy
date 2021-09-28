@@ -9,9 +9,29 @@
    <title>Document</title>
 </head>
 <body>
+  
+
     <div id="app">
-       
-        <input type="text" v-on:keyup.space.enter.G="showEvent"/>
+    
+        <form v-on:submit.prevent="formHandler">
+
+            <label>Name:</label>
+            <input type="text" v-model.trim.lazy="formData.name"/>
+            <hr/>
+            <label>Lastname:</label>
+            <input type="text" v-model="formData.lastname"/>
+            <hr/>
+            <label>Age:</label>
+            <input type="text" v-model.number="formData.age"/>
+            <hr/>
+            <input type="checkbox" id="checkbox" v-model="formData.checked"/>
+            <label>{{ formData.checked }}</label>
+            <hr/>
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
 
     </div>
 </body>
@@ -20,12 +40,19 @@
     const App = {
         data(){
             return {
-              
+                formData:{
+                    name:'Francis',
+                    lastname:'Jone',
+                    age:'',
+                    checked:false
+                }
             }
         },
         methods:{
-            showEvent(event){
-                console.log(event.target.value);
+            formHandler(){
+                console.log(this.formData.name,'=name');
+                console.log(this.formData.lastname,'=lastname');
+                console.log(this.formData.age,'=age');
             }
         }
     }
