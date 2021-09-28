@@ -10,11 +10,18 @@
 </head>
 <body>
     <div id="app">
-        <div class="box" v-on:mousemove="getCoord">
-            Hover me
-        </div>
-        <p>x: {{ x }}</p>
-        <p>y: {{ y }}</p>
+        <!-- <h1>{{ name }}</h1>
+        <button v-on:click.right="changeName('Ron', $event)">
+            Change name
+        </button> -->
+
+        <Form v-on:submit.prevent="handleForm">
+            <input/>
+            <button type="submit">
+                Submit
+            </button> 
+        </Form>
+
 
     </div>
 </body>
@@ -23,15 +30,16 @@
     const App = {
         data(){
             return {
-                name:'Francis',
-                x:0,
-                y:0
+                name:'Francis'
             }
         },
         methods:{
-            getCoord(event){
-                this.x = event.clientX;
-                this.y = event.clientY;
+            handleForm(){
+                console.log('Submit form')
+            },
+            changeName(newName, event){
+                this.name = newName;
+                console.log(event)
             }
         }
     }
@@ -39,14 +47,5 @@
     Vue.createApp(App).mount('#app')
 
 </script>
-
-<style>
-.box {
-    background: red;
-    width:200px;
-    height:200px;
-}
-
-</style>
 
 </html>
