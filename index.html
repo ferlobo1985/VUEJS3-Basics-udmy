@@ -10,12 +10,11 @@
 </head>
 <body>
     <div id="app">
-
-        <div v-once>{{ name }}</div>
-        <div>{{ name }}</div>
-
-        {{ update() }}
-
+        <div class="box" v-on:mousemove="getCoord">
+            Hover me
+        </div>
+        <p>x: {{ x }}</p>
+        <p>y: {{ y }}</p>
 
     </div>
 </body>
@@ -24,14 +23,15 @@
     const App = {
         data(){
             return {
-                name:'Francis'
+                name:'Francis',
+                x:0,
+                y:0
             }
         },
         methods:{
-            update(){
-                setTimeout(() => {
-                    this.name = 'Steve'
-                }, 2000);
+            getCoord(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
             }
         }
     }
@@ -39,4 +39,14 @@
     Vue.createApp(App).mount('#app')
 
 </script>
+
+<style>
+.box {
+    background: red;
+    width:200px;
+    height:200px;
+}
+
+</style>
+
 </html>
