@@ -9,29 +9,59 @@
    <title>Document</title>
 </head>
 <body>
-    <div id="app">
-        
-        <button @click="getIt">Helvetica and Times New Roman walk into a bar.</button>
-        <hr/>
-        <a :href="website">Go to worst/best website in the world</a>
 
+    
+    <div id="app1">
+        <div>Instance one:{{ value }}</div>
+        <button @click="changeValue">Change</button>
     </div>
+
+
+    <div id="app2">
+        <div>Instance two:{{ value }}</div>
+        <button @click="sayHello">Say hello</button>
+    </div>
+
+
+
+
 </body>
 <script>
-    const App = {
+
+    let message = "Hey guys";
+
+    const app1 = Vue.createApp({
         data(){
             return {
-              website:'https://www.lingscars.com/'
+                value:'Instance one working'
             }   
         },
         methods:{
-            getIt(){
-                alert('“Get out of here!” shouts the bartender. “We don’t serve your type.”')
+            changeValue(){
+                console.log(app2)
+                app2.value = 'The value changed'
             }
         }
-    }
+    }).mount('#app1');
+   
 
-    Vue.createApp(App).mount('#app')
+    const app2 = Vue.createApp({
+        data(){
+            return {
+                value:'Instance two working'
+            }   
+        },
+        methods:{
+            sayHello(){
+                alert(message)
+            }
+        }
+    }).mount('#app2');
+
+
+
+  
+
 </script>
 
 
